@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glassmorph Calculator</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Poppins/Poppins-Regular.ttf">
+</head>
+<body>
+    <div class="container">
+        <div class="background">
+            <div class="i1"></div>
+            <div class="i2"></div>
+        </div>
+        <div class="center">
+            <div class="calculator">
+                <div class="header-calc">
+                    <form name="f">
+                        <input type="text" disabled='disabled' name="input">
+                    </form>
+                </div>
+                <div class="body-calc">
+                    <div class="a">
+                        <h2 id="clear">c</h2>
+                        <button value="/">/</button>
+                        <button value="*">*</button>
+                    </div>
+                    <div class="b">
+                        <button value="7">7</button>
+                        <button value="8">8</button>
+                        <button value="9">9</button>
+                        <button value="-">-</button>
+                    </div>
+                    <div class="c">
+                        <button value="4">4</button>
+                        <button value="5">5</button>
+                        <button value="6">6</button>
+                        <button value="+">+</button>
+                    </div>
+                    <div class="d">
+                        <button value="1">1</button>
+                        <button value="2">2</button>
+                        <button value="3">3</button>
+                    </div>
+                    <div class="e">
+                        <button value="0" id="btn">0</button>
+                        <button value="00">00</button>
+                        <button value=".">.</button>
+                        <h2 id="calc">=</h2>
+                    </div>
+                </div>     
+            </div>
+        </div>
+    </div>
+    <script src="js/vanilla-tilt.js"></script>
+    <script>
+
+            VanillaTilt.init(document.querySelectorAll(".calculator"), {
+                    max: 18,
+                    speed: 200,
+                    // glare:true,
+                    // "max-glare":0.7,
+                });
+
+        let button = document.querySelectorAll('button');
+        
+        button[0].onclick = function(){
+            document.f.input.value='';
+        }
+
+
+        for (let i = 0; i < button.length; i++) {
+            button[i].onclick = function(){
+                document.f.input.value = document.f.input.value + button[i].value;
+            }
+        }
+
+        document.querySelector('#clear').addEventListener('click',function(){
+            document.f.input.value = '';
+        })
+
+        document.querySelector('#calc').addEventListener('click',function(){
+            document.f.input.value = eval(document.f.input.value);
+        })
+
+        if(false){
+            alert('False')
+        }
+
+
+    </script>
+</body>
+</html>
